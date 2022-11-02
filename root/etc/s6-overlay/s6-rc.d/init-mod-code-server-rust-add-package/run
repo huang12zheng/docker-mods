@@ -1,0 +1,35 @@
+#!/usr/bin/with-contenv bash
+
+echo "*** Rust Installer ***"
+echo "Checking if awscli is installed"
+# If using this, we need to make sure we set this init as a dependency of init-mods-package-install so this one runs first
+
+if ! rustc --version &> /dev/null; then 
+    echo "**** Adding apprise and its deps to package install lists ****"
+#    rustup default stable
+#    echo "apprise" >> /mod-pip-packages-to-install.list
+    ## Ubuntu
+    if [ -f /usr/bin/apt ]; then
+        echo "\
+            curl \
+            build-essential \
+            gcc \
+            make \
+            runc" >> /mod-repo-packages-to-install.list
+    fi
+#    # Alpine
+#    if [ -f /sbin/apk ]; then
+#        echo "\
+#            cargo \
+#            libffi-dev \
+#            openssl-dev \
+#            python3 \
+#            python3-dev \
+#            python3 \
+#            py3-pip" >> /mod-repo-packages-to-install.list
+#    fi
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    rustup default stable
+else
+    echo "**** rust already installed, skipping ****"
+fi

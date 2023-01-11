@@ -2,7 +2,9 @@
 
 if ! rustc --version &> /dev/null; then 
     echo "Installing rustup"
+
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    chown -R abc:abc $HOME/.cargo $HOME/.rustup
     source "$HOME/.cargo/env"
     rustup default stable
 else

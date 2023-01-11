@@ -2,8 +2,8 @@
 
 if ! rustc --version &> /dev/null; then 
     echo "Installing rustup"
-    apt-get install -y curl build-essential gcc make runc
     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    source "$HOME/.cargo/env"
     rustup default stable
 else
     echo "**** rust already installed, skipping ****"

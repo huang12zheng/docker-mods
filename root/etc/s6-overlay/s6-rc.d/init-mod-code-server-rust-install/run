@@ -10,3 +10,5 @@ if ! rustc --version &> /dev/null; then
 else
     echo "**** rust already installed, skipping ****"
 fi
+
+install-extension pinage404.rust-extension-pack

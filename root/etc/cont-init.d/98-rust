@@ -1,0 +1,17 @@
+#!/usr/bin/with-contenv bash
+
+if ! rustc --version &> /dev/null; then 
+    echo "Installing rustup"
+    # for cc
+    apt-get install curl build-essential gcc make runc -y
+    # for some need libssl
+    apt-get install libssl-dev pkg-config -y
+    # for rust-bindgen
+    apt-get install llvm-dev libclang-dev clang -y
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+    chown -R abc:abc $HOME/.cargo $HOME/.rustup
+    source "$HOME/.cargo/env"
+    rustup default stable
+else
+    echo "**** rust already installed, skipping ****"
+fi

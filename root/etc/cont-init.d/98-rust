@@ -1,9 +1,9 @@
 #!/usr/bin/with-contenv bash
 
 if ! rustc --version &> /dev/null; then 
-    echo "**** Adding rust and its deps to package install lists ****"
-    apt-get curl build-essential gcc make runc -y
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    echo "Installing rustup"
+    apt-get install -y curl build-essential gcc make runc
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
     rustup default stable
 else
     echo "**** rust already installed, skipping ****"

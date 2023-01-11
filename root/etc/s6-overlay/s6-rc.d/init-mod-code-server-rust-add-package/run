@@ -1,11 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-echo "*** Rust Installer ***"
-echo "Checking if awscli is installed"
-# If using this, we need to make sure we set this init as a dependency of init-mods-package-install so this one runs first
-
 if ! rustc --version &> /dev/null; then 
-    echo "**** Adding apprise and its deps to package install lists ****"
+    echo "**** Adding rust deps to package install lists ****"
     ## Ubuntu
     if [ -f /usr/bin/apt ]; then
         echo "\
@@ -15,7 +11,7 @@ if ! rustc --version &> /dev/null; then
             make \
             runc" >> /mod-repo-packages-to-install.list
     fi
-#    # Alpine
+    ## Alpine
     if [ -f /sbin/apk ]; then
         echo "\
             curl \

@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+if [ ! -f "/usr/local/bin/mold" ]; then 
+    apt-get install build-essential
+    git clone https://github.com/rui314/mold.git
+    mkdir mold/build
+    cd mold/build
+    # git checkout v1.9.0
+    ../install-build-deps.sh
+    cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_COMPILER=c++ ..
+    cmake --build . -j $(nproc)
+    sudo cmake --install .
+else
+    echo "**** mold already installed, skipping ****"
+fi

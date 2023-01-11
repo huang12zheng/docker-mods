@@ -1,10 +1,15 @@
-# Rust - Docker mod for code-server/openvscode-server
+# Rust - Docker mod for mold
 
-This mod adds Rust to code-server/openvscode-server, to be installed/updated during container start.
+This mod adds Rust to mold, to be installed/updated during container start.
 
-In code-server/openvscode-server docker arguments, set an environment variable `DOCKER_MODS=linuxserver/mods:code-server-rust`
+In mold docker arguments, set an environment variable `DOCKER_MODS=linuxserver/mods:mold`
 
-If adding multiple mods, enter them in an array separated by `|`, such as `DOCKER_MODS=linuxserver/mods:code-server-rust|linuxserver/mods:code-server-mod2`
+If adding multiple mods, enter them in an array separated by `|`, such as `DOCKER_MODS=linuxserver/mods:mold|linuxserver/mods:code-server-mod2`
 
-> Notice, instead, make `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh` **to**
-> curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+> Compared to [install-build-deps](https://github.com/rui314/mold/blob/main/install-build-deps.sh), I also made `apt-get install build-essential` 
+```
+docker run --privileged -e DOCKER_MODS=hzgood/mold -p $port:8443 -e SUDO_PASSWORD=1 \
+  -v /Users/huangzheng/Container/workspace:/config/workspace/ \
+  -v /Users/huangzheng/Container/lists:/var/lib/apt/lists/ \
+  linuxserver/code-server
+```

@@ -1,0 +1,16 @@
+#!/usr/bin/with-contenv bash
+
+if [ ! -f "/usr/local/bin/mold" ]; then
+    echo "**** Adding mold's dependencies to package install list ****"
+    echo "\
+        build-essential \
+        cmake \
+        libssl-dev \
+        zlib1g-dev \
+        gcc \
+        g++" >> /mod-repo-packages-to-install.list
+    echo "\
+        file" >> /mod-repo-packages-to-install.list
+else
+    echo "**** mold already installed, skipping ****"
+fi

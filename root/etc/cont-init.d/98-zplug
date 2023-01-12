@@ -1,0 +1,15 @@
+#!/usr/bin/with-contenv bash
+
+# Determine if setup is needed
+if ! command -v zplug; && \
+  if [ -f /usr/bin/apt ]; then
+    ## Ubuntu
+    apt-get install curl zsh -y
+  fi
+  if [ -f /sbin/apk ]; then
+    # Alpine
+    # ncurses for tput
+    apk add curl zsh ncurses git
+  fi
+  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+fi

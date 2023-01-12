@@ -1,0 +1,19 @@
+#!/usr/bin/with-contenv bash
+
+if ! command -v zplug; then
+    echo "**** Adding zsh's dependencies to package install list ****"
+    if [ -f /usr/bin/apt ]; then
+        echo "\
+            curl \
+            zsh" >> /mod-repo-packages-to-install.list
+    fi
+    if [ -f /sbin/apk ]; then
+        echo "\
+            curl \
+            zsh \
+            ncurses \
+            git" >> /mod-repo-packages-to-install.list
+    fi
+else
+    echo "**** zplug already installed, skipping ****"
+fi

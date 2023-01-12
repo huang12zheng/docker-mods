@@ -1,10 +1,10 @@
-# Rsync - Docker mod for openssh-server
+# zplug - Docker mod for zsh
 
-This mod adds rsync to openssh-server, to be installed/updated during container start.
+This mod adds zplug to zsh, to be installed/updated during container start.
 
-In openssh-server docker arguments, set an environment variable `DOCKER_MODS=linuxserver/mods:openssh-server-rsync`
+In openssh-server docker arguments, set an environment variable `DOCKER_MODS=linuxserver/mods:universal-zplug`
 
-If adding multiple mods, enter them in an array separated by `|`, such as `DOCKER_MODS=linuxserver/mods:openssh-server-rsync|linuxserver/mods:openssh-server-mod2`
+If adding multiple mods, enter them in an array separated by `|`, such as `DOCKER_MODS=linuxserver/mods:linuxserver/mods:universal-zplug|linuxserver/mods:openssh-server-mod2`
 
 # Mod creation instructions
 

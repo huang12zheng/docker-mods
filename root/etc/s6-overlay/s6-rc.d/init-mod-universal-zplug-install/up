@@ -4,5 +4,5 @@
 # so it can take advantage of packages installed
 # init-mods-end depends on this script so that later init and services wait until this script exits
 
-echo "**** Setting up apprise ****"
-apprise blah blah
+echo "**** Setting up zplug ****"
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh

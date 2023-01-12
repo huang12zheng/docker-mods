@@ -4,8 +4,8 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   ENDPOINT: "hzgood/mods" #don't modify
-  BASEIMAGE: "universal" #replace
-  MODNAME: "cn-apt-source" #replace
+  BASEIMAGE: "cn-" #replace
+  MODNAME: "apt-source" #replace
 
 jobs:
   build:

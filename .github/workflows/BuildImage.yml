@@ -4,8 +4,8 @@ on: [push, pull_request, workflow_dispatch]
 
 env:
   ENDPOINT: "hzgood/mods" #don't modify
-  BASEIMAGE: "global" #replace
-  MODNAME: "config" #replace
+  BASEIMAGE: "vscode" #replace
+  MODNAME: "global-config" #replace
 
 jobs:
   build:
